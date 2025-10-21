@@ -29,7 +29,7 @@ public class ScraperService {
     @Value("${app.scraper.base-url}")
     private String baseUrl;
 
-    private static final int MAX_PRODUCTS_PER_CATEGORY = 5;
+    private static final int MAX_PRODUCTS_PER_CATEGORY = 15;
 
     private final Map<String, String> categories = new HashMap<>() {{
         put("Fruits & Vegetables", "/products/category/Fresh__Fruits__&__Vegetables/Fruits");
@@ -38,7 +38,7 @@ public class ScraperService {
         put("Bakery", "/products/category/Bakery");
         put("Meat", "/products/category/Meat");
         put("Frozen", "/products/category/Frozen");
-
+        put("Drinks", "/products/category/Drinks");
     }};
 
 
