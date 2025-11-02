@@ -16,6 +16,8 @@ public class Product {
     private String imageUrl;
     private String availability;
     private String category;
+    private String storeName;      // ADD THIS
+    private String productUrl;     // ADD THIS
 
     @Override
     public String toString() {
@@ -24,6 +26,7 @@ public class Product {
                 ", price='" + price + '\'' +
                 ", category='" + category + '\'' +
                 ", availability='" + availability + '\'' +
+                ", storeName='" + storeName + '\'' +
                 '}';
     }
 }

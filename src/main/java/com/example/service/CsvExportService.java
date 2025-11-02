@@ -37,9 +37,9 @@ public class CsvExportService {
             Path outputPath = Paths.get(csvOutputPath);
             Files.createDirectories(outputPath.getParent());
 
-            // Define CSV headers - 6 columns now
+            // In exportToCSV method, change headers array:
             String[] headers = {
-                    "Product Name", "Price", "Description", "Image URL", "Availability", "Category"
+                    "Product Name", "Price", "Description", "Image URL", "Availability", "Category", "Store Name", "Product Url"
             };
 
             // Create CSV printer
@@ -49,7 +49,7 @@ public class CsvExportService {
                                  .setHeader(headers)
                                  .build())) {
 
-                // Write product data - 6 fields now
+                // Write product data - 8 fields now
                 for (Product product : products) {
                     csvPrinter.printRecord(
                             product.getName(),
@@ -57,9 +57,12 @@ public class CsvExportService {
                             product.getDescription(),
                             product.getImageUrl(),
                             product.getAvailability(),
-                            product.getCategory()
+                            product.getCategory(),
+                            product.getStoreName(),
+                            product.getProductUrl()
                     );
                 }
+
 
                 csvPrinter.flush();
                 logger.info("Successfully exported {} products to {}", products.size(), csvOutputPath);
@@ -91,7 +94,7 @@ public class CsvExportService {
                                  .build())) {
 
                 if (!fileExists) {
-                    csvPrinter.printRecord("Product Name", "Price", "Description", "Image URL", "Availability", "Category");
+                    csvPrinter.printRecord("Product Name", "Price", "Description", "Image URL", "Availability", "Category", "Store Name", "Product Url");
                 }
 
                 for (Product product : products) {
@@ -101,7 +104,9 @@ public class CsvExportService {
                             product.getDescription(),
                             product.getImageUrl(),
                             product.getAvailability(),
-                            product.getCategory()
+                            product.getCategory(),
+                            product.getStoreName(),
+                            product.getProductUrl()
                     );
                 }
 

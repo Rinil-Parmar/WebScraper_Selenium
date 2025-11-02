@@ -29,7 +29,7 @@ public class ScraperService {
     @Value("${app.scraper.base-url}")
     private String baseUrl;
 
-    private static final int MAX_PRODUCTS_PER_CATEGORY = 15;
+    private static final int MAX_PRODUCTS_PER_CATEGORY = 20;
 
     private final Map<String, String> categories = new HashMap<>() {{
         put("Fruits & Vegetables", "/products/category/Fresh__Fruits__&__Vegetables/Fruits");
@@ -179,6 +179,8 @@ public class ScraperService {
 
             Product product = Product.builder().build();
             product.setCategory(categoryName);
+            product.setStoreName("FreshCo");           // Store name
+            product.setProductUrl(productUrl);         // Product URL
 
             // Extract all data with a single JS call
             Map<String, Object> data = extractAllDataAtOnce((JavascriptExecutor) driver);
